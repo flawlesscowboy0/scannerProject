@@ -27,7 +27,7 @@ from pathlib import Path
 
 path = input("Enter path of file you wish to scan: ")
 text = Path(path).read_text()  # Reads entire file into text object.
-wordList = re.split(r"([A-Za-z]+|[0-9]+|\t+|\n+|[/*,=]+|[\":.]+|[+\-$%&()])",
+wordList = re.split(r"([A-Za-z]+|[0-9]+|\t|\n|[/*,=]+|[\":.]+|[\[\]<>+\-$%&()])",
                     text)  # This regex captures all tokens properly.
 """
 Unfortunately, the regex above captures tokens *too* well, and we end up with a variety of weird whitespace in the list.
@@ -80,6 +80,8 @@ for word in wordList:
             newToken = Token('Special Symbols', tokenList["Special Symbols"][word], word)
         elif word.isdigit():
             newToken = Token('Numbers', 1111, word)
+        elif word.isalpha() and len(word) == 1:
+            newToken = Token('Characters', 2222, word)
         else:
             newToken = Token('Unknown Token', 7777, word)
 

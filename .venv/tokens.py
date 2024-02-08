@@ -40,7 +40,16 @@ tokenList = {
         'for': 36,
         'to': 37,
         'do': 38,
-        'endfor': 39
+        'endfor': 39,
+        'string': 40,
+        'specifications': 41,
+        'struct': 42,
+        'endstruct': 43,
+        'definetype': 44,
+        'declarations': 45,
+        'parameters': 46,
+        'void': 47,
+        'destroy': 48
     },
 
     "Identifiers": {
@@ -55,6 +64,21 @@ tokenList = {
         'ave': 108,
         'svalue': 109,
         'num': 110,
+        'basic': 111,
+        'lib': 112,
+        'linked': 113,
+        'Datablock': 114,
+        'stname': 115,
+        'age': 116,
+        'jobcode': 117,
+        'DataT': 118,
+        'make': 119,
+        'dblock': 120,
+        'nname': 121,
+        'nage': 122,
+        'njobcode': 123,
+        'data': 124,
+        'stdio': 125
     },
 
     "Operators": {
@@ -80,7 +104,9 @@ tokenList = {
         '\n': 505,
         '\t': 506,
         'scl': 507,
-        'h': 508
+        '_': 508,
+        '[': 509,
+        ']': 510
     }
 }
 
