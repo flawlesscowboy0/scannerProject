@@ -64,29 +64,22 @@ for word in wordList:
     # Example File has a new token made here, "End of Statement" but we capture \n so not sure if necessary.
 
 # Create JSON file
-
-json_output = open("OutputTokens.json", "w")  # Open file for writing.
-masterDictionary = {}  # Create empty dictionary.
-counter = 0
-for Token in masterTokenList:
-    tokenID = "Token " + counter.__str__()  # Generate token ID using counter.
-    masterDictionary.update({tokenID: {}})
-    counter += 1
-
-
 # Helper method to convert list to dictionary.
 def create_dictionary(a):
     dictObj = iter(a)
     return dict(zip(dictObj, dictObj))
     # Zip takes the iterable objects out of the passed in list in pairs, creating a new dictionary object out of them.
 
-
-counter = 0  # Reset the clock
+# Condensed this all into one section.
+json_output = open("OutputTokens.json", "w")  # Open file for writing.
+masterDictionary = {}  # Create empty dictionary.
+counter = 0
 for Token in masterTokenList:
+    tokenID = "Token " + counter.__str__()  # Generate token ID using counter.
+    masterDictionary.update({tokenID: {}})
     tokenData = Token.getData()
     dataList = ['Type', tokenData[0], 'ID', tokenData[1], 'Value', tokenData[2]]
     tokenDataDictionary = create_dictionary(dataList)
-
     tokenID = "Token " + counter.__str__()  # Make ID same as before.
     masterDictionary[tokenID].update(tokenDataDictionary)
     counter += 1
