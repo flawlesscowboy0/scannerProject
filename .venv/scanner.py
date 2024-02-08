@@ -26,7 +26,7 @@ import re
 from pathlib import Path
 path = input("Enter path of file you wish to scan: ")
 text = Path(path).read_text()  # Reads entire file into text object.
-wordList = re.split(r"([A-Za-z]+|[0-9]+|\t+|\n+|[/*,.=]+|[\":*/]+)", text)  # This regex captures all tokens properly.
+wordList = re.split(r"([A-Za-z]+|[0-9]+|\t+|\n+|[/*,=]+|[\":.]+)", text)  # This regex captures all tokens properly.
 """
 Unfortunately, the regex above captures tokens *too* well, and we end up with a variety of weird whitespace in the list.
 The lines below simply remove the remaining empty strings so that pprint will not display them and they will not be
@@ -46,15 +46,6 @@ while len(count) < 32:  # Arbitrary length, could be easily adjusted to capture 
     count += " "  # Append one more space to each iteration of the loop.
 pprint.pprint(wordList)  # This will pretty print the list. If split along whitespace, \n and \t will be shown.
 
-# New logic to read line by line, tokenizing as we go.
-
-# with open(path) as inputfile:
-#     while textline := inputfile.readline():
-#         words = [ ''.join(textline.split()) ]
-#         wordlist = list
-#         wordlist.append(words)
-#     print(wordlist)
-
 """Prototyping the logic to parse the list.
 
 commentBlock updates only on hitting block comment notation. If true, no tokens should be scanned.
@@ -65,9 +56,7 @@ commentBlock = False
 inlineComment = False
 masterTokenList = []
 for word in wordList:
-    if word == "\t":  # We don't need to tag this one I don't think.
-        continue
-    elif word == "/*":
+    if word == "/*":
         commentBlock = True
     elif word == "*/":
         commentBlock = False
@@ -76,7 +65,7 @@ for word in wordList:
         inlineComment = True
     elif word == "\n":
         inlineComment = False
-    # Probably also need special handling for unknown tokens and for items inside of quotations.
+
     # Begin comparison logic.
     if not commentBlock and not inlineComment:
         # Logic to compare list elements against token dictionary should go here.
@@ -109,8 +98,8 @@ for Token in masterTokenList:
 def createDictionary(a):
     dictObj = iter(a)
     return dict(zip(dictObj, dictObj))
-    # Zip takes the iterable objects out of the passed in list in pairs, creating
-    # a new dictionary object out of them.
+    # Zip takes the iterable objects out of the passed in list in pairs, creating a new dictionary object out of them.
+
 
 counter = 0  # Reset the clock
 for Token in masterTokenList:
