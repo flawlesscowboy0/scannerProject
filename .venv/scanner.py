@@ -76,12 +76,12 @@ masterDictionary = {}  # Create empty dictionary.
 counter = 0
 for Token in masterTokenList:
     tokenID = "Token " + counter.__str__()  # Generate token ID using counter.
-    masterDictionary.update({tokenID: {}})
+    masterDictionary.update({tokenID: {}})  # Add Token sub-dictionary to the master dictionary.
     tokenData = Token.getData()
     dataList = ['Type', tokenData[0], 'ID', tokenData[1], 'Value', tokenData[2]]
-    tokenDataDictionary = create_dictionary(dataList)
+    tokenDataDictionary = create_dictionary(dataList)  # Create the sub-dictionary.
     tokenID = "Token " + counter.__str__()  # Make ID same as before.
-    masterDictionary[tokenID].update(tokenDataDictionary)
+    masterDictionary[tokenID].update(tokenDataDictionary)  # Insert sub-dictionary to the correct Token location.
     counter += 1
 
 json_data = json.dumps(masterDictionary, indent=4)
