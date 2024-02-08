@@ -24,9 +24,11 @@ import pprint
 import re
 
 from pathlib import Path
+
 path = input("Enter path of file you wish to scan: ")
 text = Path(path).read_text()  # Reads entire file into text object.
-wordList = re.split(r"([A-Za-z]+|[0-9]+|\t+|\n+|[/*,=]+|[\":.]+)", text)  # This regex captures all tokens properly.
+wordList = re.split(r"([A-Za-z]+|[0-9]+|\t+|\n+|[/*,=]+|[\":.]+|[+\-$%&()])",
+                    text)  # This regex captures all tokens properly.
 """
 Unfortunately, the regex above captures tokens *too* well, and we end up with a variety of weird whitespace in the list.
 The lines below simply remove the remaining empty strings so that pprint will not display them and they will not be
@@ -48,10 +50,9 @@ pprint.pprint(wordList)  # This will pretty print the list. If split along white
 
 """Prototyping the logic to parse the list.
 
-commentBlock updates only on hitting block comment notation. If true, no tokens should be scanned.
-
-Checks also for tab character (there is at least one in the file) and simply continues from there"""
+commentBlock updates only on hitting block comment notation. If true, no tokens should be scanned."""
 from tokens import *
+
 commentBlock = False
 inlineComment = False
 masterTokenList = []
@@ -77,6 +78,8 @@ for word in wordList:
             newToken = Token('Operators', tokenList["Operators"][word], word)
         elif word in tokenList["Special Symbols"]:
             newToken = Token('Special Symbols', tokenList["Special Symbols"][word], word)
+        elif word.isdigit():
+            newToken = Token('Numbers', 1111, word)
         else:
             newToken = Token('Unknown Token', 7777, word)
 
@@ -86,7 +89,7 @@ for word in wordList:
 
 # Create JSON file
 
-JSONoutput = open("OutputTokens.json", "w")  # Open file for writing.
+json_output = open("OutputTokens.json", "w")  # Open file for writing.
 masterDictionary = {}  # Create empty dictionary.
 counter = 0
 for Token in masterTokenList:
@@ -94,8 +97,9 @@ for Token in masterTokenList:
     masterDictionary.update({tokenID: {}})
     counter += 1
 
+
 # Helper method to convert list to dictionary.
-def createDictionary(a):
+def create_dictionary(a):
     dictObj = iter(a)
     return dict(zip(dictObj, dictObj))
     # Zip takes the iterable objects out of the passed in list in pairs, creating a new dictionary object out of them.
@@ -105,11 +109,11 @@ counter = 0  # Reset the clock
 for Token in masterTokenList:
     tokenData = Token.getData()
     dataList = ['Type', tokenData[0], 'ID', tokenData[1], 'Value', tokenData[2]]
-    tokenDataDictionary = createDictionary(dataList)
+    tokenDataDictionary = create_dictionary(dataList)
 
     tokenID = "Token " + counter.__str__()  # Make ID same as before.
     masterDictionary[tokenID].update(tokenDataDictionary)
     counter += 1
 
-JSONdata= json.dumps(masterDictionary, indent=4)
-JSONoutput.write(JSONdata)  # Create data object and write to file.
+json_data = json.dumps(masterDictionary, indent=4)
+json_output.write(json_data)  # Create data object and write to file.

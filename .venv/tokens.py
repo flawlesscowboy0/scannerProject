@@ -67,7 +67,8 @@ tokenList = {
         '<': 306,
         '"': 407,
         '=': 408,
-        'add': 409
+        'add': 409,
+        ':': 410
     },
 
     "Special Symbols": {
@@ -76,10 +77,13 @@ tokenList = {
         'PI': 502,
         'M_PI': 503,
         '[N]': 504,
-        '\n' : 505,
-        '\t' : 506
+        '\n': 505,
+        '\t': 506,
+        'scl': 507,
+        'h': 508
     }
 }
+
 
 class Token:
     def __init__(self, type, id, value):
