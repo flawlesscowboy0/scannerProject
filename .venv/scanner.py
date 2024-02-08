@@ -5,7 +5,8 @@ Logical Steps:
     2. Split string into tokens along the following lines:
         a. All words with letters only.
         b. All words with numbers only.
-        c. All punctuation/operators (,.!@#$%^&*()+=-_[]{}/?'";:<>)
+        c. All punctuation/operators (,.!@#$%^&*()+=-_[]{}/?'";:<>) either in singleton form or repeated.
+        d. Special characters which are unprintable such as \n and \t.
     3. Tokens will be stored in a list, which is then iterated over as list items are compared against a dictionary.
     4. Successful (or not) comparison against the dictionary entries produces the full form of the token for inclusion
        in the JSON file which is produced.
