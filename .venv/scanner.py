@@ -80,7 +80,6 @@ for Token in masterTokenList:
     tokenData = Token.getData()
     dataList = ['Type', tokenData[0], 'ID', tokenData[1], 'Value', tokenData[2]]
     tokenDataDictionary = create_dictionary(dataList)  # Create the sub-dictionary.
-    tokenID = "Token " + counter.__str__()  # Make ID same as before.
     masterDictionary[tokenID].update(tokenDataDictionary)  # Insert sub-dictionary to the correct Token location.
     counter += 1
 
