@@ -15,7 +15,6 @@ Logical Steps:
 import json
 import re
 from tokens import *
-
 from pathlib import Path
 
 path = input("Enter path of file you wish to scan: ")
