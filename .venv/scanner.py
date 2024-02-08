@@ -2,51 +2,24 @@
 Logical Steps:
 
     1. Read entire file into string.
-    2. Split string into words (tokens) and prepare for processing. NOTE: Need to determine fate/handling of special
-    characters like \n amd \t.
-    3. Once list of words is prepared, compare against token dictionary and update attributes (identifier, keyword, etc)
-    NOTE: Probably useful to simply convert string objects in list to list objects in list (which themselves hold
-    strings) for easy handling of attributes.
-    4. Once all tokens are properly tagged, produce JSON file from list.
-    5. Ensure all output is correctly displayed and JSON file is produced correctly.
-
-    Reading the entire file into a list allows us to iterate over the list and easily handle comments both at the end of
-    a line and as a block. (See prototype logic below for an idea of how block comments can be handled via this method.
-    For end of line comments the implementation will be to check for \n after them which would imply the end of the
-    comment.)
-
-    Currently, need to implement a dictionary or devise a regex capable of parsing for the types of characters we are
-    interested in parsing. Need to implement comparison against dictionary.
+    2. Split string into tokens along the following lines:
+        a. All words with letters only.
+        b. All words with numbers only.
+        c. All punctuation/operators (,.!@#$%^&*()+=-_[]{}/?'";:<>)
+    3. Tokens will be stored in a list, which is then iterated over as list items are compared against a dictionary.
+    4. Successful (or not) comparison against the dictionary entries produces the full form of the token for inclusion
+       in the JSON file which is produced.
 """
 
 import json
-import pprint
 import re
 
 from pathlib import Path
 
 path = input("Enter path of file you wish to scan: ")
 text = Path(path).read_text()  # Reads entire file into text object.
-wordList = re.split(r"([A-Za-z]+|[0-9]+|\t|\n|[/*,=]+|[\":.]+|[\[\]<>+\-$%&()])",
-                    text)  # This regex captures all tokens properly.
-"""
-Unfortunately, the regex above captures tokens *too* well, and we end up with a variety of weird whitespace in the list.
-The lines below simply remove the remaining empty strings so that pprint will not display them and they will not be
-errantly entered into the JSON or as an "unknown" token.
-
-Considered solutions:
-
-''.join().split() - This can remove errant leftover whitespace, but you also lose \n and \t.
-Could look into filter(), list comprehension, or lambda.
-
-The iterating whitespace eater below is as elegant as it gets for now.
-"""
-count = ""
-while len(count) < 32:  # Arbitrary length, could be easily adjusted to capture even more whitespace.
-    while count in wordList:
-        wordList.remove(count)
-    count += " "  # Append one more space to each iteration of the loop.
-pprint.pprint(wordList)  # This will pretty print the list. If split along whitespace, \n and \t will be shown.
+# This regex captures all tokens properly, no longer any issues with whitespace.
+wordList = re.findall(r"[A-Za-z]+|[0-9]+|\t|\n|[/*,=]+|[\":.]+|[\[\]<>+\-$%&()]+", text)
 
 """Prototyping the logic to parse the list.
 
