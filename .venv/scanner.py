@@ -14,6 +14,7 @@ Logical Steps:
 
 import json
 import re
+from tokens import *
 
 from pathlib import Path
 
@@ -25,8 +26,6 @@ wordList = re.findall(r"[A-Za-z]+|[0-9]+|\t|\n|[/*,=]+|[\":.]+|[\[\]<>+\-$%&()]+
 """Prototyping the logic to parse the list.
 
 commentBlock updates only on hitting block comment notation. If true, no tokens should be scanned."""
-from tokens import *
-
 commentBlock = False
 inlineComment = False
 masterTokenList = []
@@ -63,12 +62,14 @@ for word in wordList:
         masterTokenList.append(newToken)  # Add token to master list.
     # Example File has a new token made here, "End of Statement" but we capture \n so not sure if necessary.
 
+
 # Create JSON file
 # Helper method to convert list to dictionary.
 def create_dictionary(a):
     dictObj = iter(a)
     return dict(zip(dictObj, dictObj))
     # Zip takes the iterable objects out of the passed in list in pairs, creating a new dictionary object out of them.
+
 
 # Condensed this all into one section.
 json_output = open("OutputTokens.json", "w")  # Open file for writing.
