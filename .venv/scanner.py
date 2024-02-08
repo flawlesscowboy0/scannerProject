@@ -13,6 +13,7 @@ Logical Steps:
 """
 
 import json
+import pprint
 import re
 from tokens import *
 from pathlib import Path
@@ -20,16 +21,17 @@ from pathlib import Path
 path = input("Enter path of file you wish to scan: ")
 text = Path(path).read_text()  # Reads entire file into text object.
 # This regex captures all tokens properly, no longer any issues with whitespace.
-wordList = re.findall(r"[A-Za-z]+|[0-9]+|\t|\n|[/*,=]+|[\":.]+|[\[\]<>+\-$%&()]+", text)
+wordList = re.findall(r'"[^"]*"|[A-Za-z]+|[0-9]+|\t|\n|[/*,=]+|[:.]+|[\[\]<>+\-$%&()]+', text)
 
 """Prototyping the logic to parse the list.
 
 commentBlock updates only on hitting block comment notation. If true, no tokens should be scanned."""
 commentBlock = False
 inlineComment = False
+stringLiteral = False
 masterTokenList = []
 for word in wordList:
-    if word == "/*":
+    if word == "/*" or word == "description":
         commentBlock = True
     elif word == "*/":
         commentBlock = False
@@ -38,11 +40,16 @@ for word in wordList:
         inlineComment = True
     elif word == "\n":
         inlineComment = False
+    elif word.startswith('"'):
+        stringLiteral = True
 
     # Begin comparison logic.
     if not commentBlock and not inlineComment:
         # Logic to compare list elements against token dictionary should go here.
-        if word in tokenList["Keywords"]:
+        if stringLiteral:
+            newToken = Token('String Literal', 3333, word)
+            stringLiteral = False
+        elif word in tokenList["Keywords"]:
             newToken = Token('Keywords', tokenList["Keywords"][word], word)
         elif word in tokenList["Identifiers"]:
             newToken = Token('Identifiers', tokenList["Identifiers"][word], word)
