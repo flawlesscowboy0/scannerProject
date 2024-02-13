@@ -20,7 +20,7 @@ from pathlib import Path
 
 # Experimental command line argument acceptance.
 sysArgv = sys.argv
-if sysArgv[1] is not None:
+if len(sysArgv) > 1:
     # Accepts command line arguments of the form - py ./scanner.py ./file_to_be_scanned
     text = Path(sysArgv[1]).read_text()  # Reads entire file into text object from command line.
 else:
