@@ -53,8 +53,8 @@ for word in wordList:
     if not commentBlock and not inlineComment:
         # Logic to compare list elements against token dictionary should go here.
         if stringLiteral:
-            word = word.strip('"')
-            newToken = Token('String Literal', 2222, word)
+            strippedWord = word.strip('"')
+            newToken = Token('String Literal', 2222, strippedWord)
             stringLiteral = False
         elif re.match(r"^[0-9]+(\.[0-9]+)?$", word):
             newToken = Token('Numeric Literal', 1111, word)
