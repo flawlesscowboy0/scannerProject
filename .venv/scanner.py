@@ -13,7 +13,6 @@ Logical Steps:
 """
 
 import json
-import pprint
 import re
 from tokens import *
 from pathlib import Path
@@ -21,7 +20,7 @@ from pathlib import Path
 path = input("Enter path of file you wish to scan: ")
 text = Path(path).read_text()  # Reads entire file into text object.
 # This regex captures all tokens properly, no longer any issues with whitespace.
-wordList = re.findall(r'"[^"]*"|[A-Za-z]+|[0-9]+|\t|\n|[/*,=]+|[:.]+|[\[\]<>+\-$%&()]+', text)
+wordList = re.findall(r'"[^"]*"|[a-zA-Z_]+|\d+\.\d+|\t|\n|[/*,=]+|[:.]+|[\[\]<>+\-$%&()]+', text)
 
 """Prototyping the logic to parse the list.
 
@@ -47,9 +46,11 @@ for word in wordList:
     if not commentBlock and not inlineComment:
         # Logic to compare list elements against token dictionary should go here.
         if stringLiteral:
-            word = word[1:-1].replace('\\"', '"')
-            newToken = Token('String Literal', 3333, word)
+            word = word.strip('"')
+            newToken = Token('String Literal', 2222, word)
             stringLiteral = False
+        elif re.match(r"^[0-9]+(\.[0-9]+)?$", word):
+            newToken = Token('Numeric Literal', 1111, word)
         elif word in tokenList["Keywords"]:
             newToken = Token('Keywords', tokenList["Keywords"][word], word)
         elif word in tokenList["Identifiers"]:
@@ -58,10 +59,6 @@ for word in wordList:
             newToken = Token('Operators', tokenList["Operators"][word], word)
         elif word in tokenList["Special Symbols"]:
             newToken = Token('Special Symbols', tokenList["Special Symbols"][word], word)
-        elif word.isdigit():
-            newToken = Token('Numbers', 1111, word)
-        elif word.isalpha() and len(word) == 1:
-            newToken = Token('Characters', 2222, word)
         else:
             newToken = Token('Unknown Token', 7777, word)
 
