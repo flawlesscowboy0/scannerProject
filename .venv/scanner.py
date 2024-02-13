@@ -12,13 +12,20 @@ Logical Steps:
        in the JSON file which is produced.
 """
 
+import sys
 import json
 import re
 from tokens import *
 from pathlib import Path
 
-path = input("Enter path of file you wish to scan: ")
-text = Path(path).read_text()  # Reads entire file into text object.
+# Experimental command line argument acceptance.
+sysArgv = sys.argv
+if sysArgv[1] is not None:
+    # Accepts command line arguments of the form - py ./scanner.py ./file_to_be_scanned
+    text = Path(sysArgv[1]).read_text()  # Reads entire file into text object from command line.
+else:
+    path = input("Enter path of file you wish to scan: ")
+    text = Path(path).read_text()  # Reads entire file into text object from user prompt.
 # This regex captures all tokens properly, no longer any issues with whitespace.
 wordList = re.findall(r'"[^"]*"|[a-zA-Z_]+|\d+\.\d+|\t|\n|[/*,=]+|[:.]+|[\[\]<>+\-$%&()]+', text)
 
