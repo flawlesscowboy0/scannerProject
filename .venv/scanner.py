@@ -47,7 +47,7 @@ for word in wordList:
     if not commentBlock and not inlineComment:
         # Logic to compare list elements against token dictionary should go here.
         if stringLiteral:
-            word = word[1:-1].replace('\\"', '"').replace("\\'", "'").replace("\\/", "/")
+            word = word[1:-1].replace('\\"', '"')
             newToken = Token('String Literal', 3333, word)
             stringLiteral = False
         elif word in tokenList["Keywords"]:
