@@ -1,212 +1,202 @@
 {
     "Token 0": {
-        "Type": "Special Symbols",
-        "ID": 503,
-        "Value": "\n"
-    },
-    "Token 1": {
         "Type": "Keywords",
         "ID": 0,
-        "Value": "import"
+        "Value": "imports"
     },
-    "Token 2": {
+    "Token 1": {
         "Type": "String Literal",
         "ID": 2222,
         "Value": "scl.h"
     },
-    "Token 3": {
-        "Type": "Special Symbols",
-        "ID": 503,
-        "Value": "\n"
+    "Token 2": {
+        "Type": "End of Statement",
+        "ID": 1000,
+        "Value": "EOS"
     },
-    "Token 4": {
+    "Token 3": {
         "Type": "Keywords",
         "ID": 1,
         "Value": "implementations"
     },
-    "Token 5": {
-        "Type": "Special Symbols",
-        "ID": 503,
-        "Value": "\n"
+    "Token 4": {
+        "Type": "End of Statement",
+        "ID": 1000,
+        "Value": "EOS"
     },
-    "Token 6": {
+    "Token 5": {
         "Type": "Keywords",
         "ID": 2,
         "Value": "function"
     },
-    "Token 7": {
+    "Token 6": {
         "Type": "Keywords",
         "ID": 3,
         "Value": "main"
     },
-    "Token 8": {
+    "Token 7": {
         "Type": "Keywords",
         "ID": 4,
         "Value": "return"
     },
-    "Token 9": {
+    "Token 8": {
         "Type": "Keywords",
         "ID": 5,
         "Value": "type"
     },
-    "Token 10": {
+    "Token 9": {
         "Type": "Keywords",
         "ID": 6,
         "Value": "integer"
     },
-    "Token 11": {
+    "Token 10": {
         "Type": "Keywords",
-        "ID": 10,
+        "ID": 7,
         "Value": "is"
     },
-    "Token 12": {
-        "Type": "Special Symbols",
-        "ID": 503,
-        "Value": "\n"
+    "Token 11": {
+        "Type": "End of Statement",
+        "ID": 1000,
+        "Value": "EOS"
     },
-    "Token 13": {
+    "Token 12": {
         "Type": "Keywords",
-        "ID": 11,
+        "ID": 8,
         "Value": "variables"
     },
-    "Token 14": {
-        "Type": "Special Symbols",
-        "ID": 503,
-        "Value": "\n"
+    "Token 13": {
+        "Type": "End of Statement",
+        "ID": 1000,
+        "Value": "EOS"
     },
-    "Token 15": {
+    "Token 14": {
         "Type": "Keywords",
-        "ID": 12,
+        "ID": 9,
         "Value": "define"
     },
-    "Token 16": {
+    "Token 15": {
         "Type": "Identifiers",
         "ID": 100,
         "Value": "x"
     },
-    "Token 17": {
+    "Token 16": {
         "Type": "Keywords",
-        "ID": 13,
+        "ID": 10,
         "Value": "of"
     },
-    "Token 18": {
+    "Token 17": {
         "Type": "Keywords",
         "ID": 5,
         "Value": "type"
     },
-    "Token 19": {
+    "Token 18": {
         "Type": "Keywords",
-        "ID": 7,
+        "ID": 11,
         "Value": "double"
     },
-    "Token 20": {
-        "Type": "Special Symbols",
-        "ID": 503,
-        "Value": "\n"
+    "Token 19": {
+        "Type": "End of Statement",
+        "ID": 1000,
+        "Value": "EOS"
     },
-    "Token 21": {
+    "Token 20": {
         "Type": "Keywords",
-        "ID": 14,
+        "ID": 12,
         "Value": "begin"
     },
-    "Token 22": {
-        "Type": "Special Symbols",
-        "ID": 503,
-        "Value": "\n"
+    "Token 21": {
+        "Type": "End of Statement",
+        "ID": 1000,
+        "Value": "EOS"
     },
-    "Token 23": {
+    "Token 22": {
         "Type": "Keywords",
-        "ID": 15,
+        "ID": 13,
         "Value": "display"
     },
-    "Token 24": {
+    "Token 23": {
         "Type": "String Literal",
         "ID": 2222,
         "Value": "Welcome to the world of SCL"
     },
-    "Token 25": {
-        "Type": "Special Symbols",
-        "ID": 503,
-        "Value": "\n"
+    "Token 24": {
+        "Type": "End of Statement",
+        "ID": 1000,
+        "Value": "EOS"
     },
-    "Token 26": {
+    "Token 25": {
         "Type": "Keywords",
-        "ID": 16,
+        "ID": 14,
         "Value": "set"
     },
-    "Token 27": {
+    "Token 26": {
         "Type": "Identifiers",
         "ID": 100,
         "Value": "x"
     },
-    "Token 28": {
+    "Token 27": {
         "Type": "Operators",
-        "ID": 408,
+        "ID": 300,
         "Value": "="
     },
-    "Token 29": {
+    "Token 28": {
         "Type": "Numeric Literal",
         "ID": 1111,
         "Value": "45.95"
     },
+    "Token 29": {
+        "Type": "End of Statement",
+        "ID": 1000,
+        "Value": "EOS"
+    },
     "Token 30": {
-        "Type": "Special Symbols",
-        "ID": 504,
-        "Value": "\t"
-    },
-    "Token 31": {
-        "Type": "Special Symbols",
-        "ID": 503,
-        "Value": "\n"
-    },
-    "Token 32": {
         "Type": "Keywords",
-        "ID": 15,
+        "ID": 13,
         "Value": "display"
     },
-    "Token 33": {
+    "Token 31": {
         "Type": "String Literal",
         "ID": 2222,
         "Value": "Value of x: "
     },
-    "Token 34": {
+    "Token 32": {
         "Type": "Special Symbols",
-        "ID": 501,
+        "ID": 500,
         "Value": ","
     },
-    "Token 35": {
+    "Token 33": {
         "Type": "Identifiers",
         "ID": 100,
         "Value": "x"
     },
+    "Token 34": {
+        "Type": "End of Statement",
+        "ID": 1000,
+        "Value": "EOS"
+    },
+    "Token 35": {
+        "Type": "Keywords",
+        "ID": 15,
+        "Value": "exit"
+    },
     "Token 36": {
-        "Type": "Special Symbols",
-        "ID": 503,
-        "Value": "\n"
+        "Type": "End of Statement",
+        "ID": 1000,
+        "Value": "EOS"
     },
     "Token 37": {
         "Type": "Keywords",
-        "ID": 17,
-        "Value": "exit"
-    },
-    "Token 38": {
-        "Type": "Special Symbols",
-        "ID": 503,
-        "Value": "\n"
-    },
-    "Token 39": {
-        "Type": "Keywords",
-        "ID": 18,
+        "ID": 16,
         "Value": "endfun"
     },
-    "Token 40": {
+    "Token 38": {
         "Type": "Keywords",
         "ID": 3,
         "Value": "main"
     },
-    "Token 41": {
-        "Type": "Special Symbols",
-        "ID": 503,
-        "Value": "\n"
+    "Token 39": {
+        "Type": "End of Statement",
+        "ID": 1000,
+        "Value": "EOS"
     }
 }
