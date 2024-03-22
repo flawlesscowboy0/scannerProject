@@ -66,8 +66,11 @@ for word in wordList:
             newToken = Token('Operators', tokenList["Operators"][word], word)
         elif word in tokenList["Special Symbols"]:
             newToken = Token('Special Symbols', tokenList["Special Symbols"][word], word)
+        elif word in tokenList["EOS"]:
+            newToken = Token('End of Statement', tokenList["EOS"][word], 'EOS')
         else:
             newToken = Token('Unknown Token', 7777, word)
+
 
         print("New Token Created: ", newToken.getData())  # Print that token was made to console, along with data.
         masterTokenList.append(newToken)  # Add token to master list.
