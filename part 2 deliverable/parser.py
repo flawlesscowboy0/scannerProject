@@ -83,3 +83,14 @@ for token in tokens:
         print("Exiting <Identifiers>")
         print("Exiting <Keywords>")
         continue
+    elif (token.type == "EOS"):
+        print("Entering <Keywords>")
+        print("Entering <Identifiers>")
+        print("Entering <Operators>")
+        print("Entering <EOS>")
+        print(f"ID: {token.id}, Value: {token.value}")
+        print("Exiting <EOS>")
+        print("Exiting <Operators>")
+        print("Exiting <Identifiers>")
+        print("Exiting <Keywords>")
+        continue
