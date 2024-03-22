@@ -24,28 +24,28 @@ def parse_tokens_from_file(file_path):
     return tokens
 
 # Example usage
-file_path = input("Enter a file path")  # Update with the path to your output file
+file_path = input("Enter a file path \n")  # Update with the path to your output file
 tokens = parse_tokens_from_file(file_path)
 
 # Print the parsed tokens
 for token in tokens:
     if (token.type == "Keywords"):
-        print("Entering <Keywords>")
-        print(f"ID: {token.id}, Value: {token.value}")
+        print("Entering <Keywords> \n")
+        print(f"ID: {token.id}, Value: {token.value} \n")
         print("Exiting <Keywords>")
         continue
     elif (token.type == "Identifiers"):
         print("Entering <Keywords>")
-        print("Entering <Identifiers>")
-        print(f"ID: {token.id}, Value: {token.value}")
+        print("Entering <Identifiers> \n")
+        print(f"ID: {token.id}, Value: {token.value} \n")
         print("Exiting <Identifiers>")
         print("Exiting <Keywords>")
         continue
     elif (token.type == "Operators"):
         print("Entering <Keywords>")
         print("Entering <Identifiers>")
-        print("Entering <Operators>")
-        print(f"ID: {token.id}, Value: {token.value}")
+        print("Entering <Operators> \n")
+        print(f"ID: {token.id}, Value: {token.value} \n")
         print("Exiting <Operators>")
         print("Exiting <Identifiers>")
         print("Exiting <Keywords>")
@@ -54,8 +54,8 @@ for token in tokens:
         print("Entering <Keywords>")
         print("Entering <Identifiers>")
         print("Entering <Operators>")
-        print("Entering <Special Symbols>")
-        print(f"ID: {token.id}, Value: {token.value}")
+        print("Entering <Special Symbols> \n")
+        print(f"ID: {token.id}, Value: {token.value} \n")
         print("Exiting <Special Symbols>")
         print("Exiting <Operators>")
         print("Exiting <Identifiers>")
@@ -65,8 +65,8 @@ for token in tokens:
         print("Entering <Keywords>")
         print("Entering <Identifiers>")
         print("Entering <Operators>")
-        print("Entering <String Literal>")
-        print(f"ID: {token.id}, Value: {token.value}")
+        print("Entering <String Literal> \n")
+        print(f"ID: {token.id}, Value: {token.value} \n")
         print("Exiting <String Literal>")
         print("Exiting <Operators>")
         print("Exiting <Identifiers>")
@@ -76,20 +76,20 @@ for token in tokens:
         print("Entering <Keywords>")
         print("Entering <Identifiers>")
         print("Entering <Operators>")
-        print("Entering <Numeric Literal>")
-        print(f"ID: {token.id}, Value: {token.value}")
+        print("Entering <Numeric Literal> \n")
+        print(f"ID: {token.id}, Value: {token.value} \n")
         print("Exiting <Numeric Literal>")
         print("Exiting <Operators>")
         print("Exiting <Identifiers>")
         print("Exiting <Keywords>")
         continue
-    elif (token.type == "EOS"):
+    elif (token.type == "End of Statement"):
         print("Entering <Keywords>")
         print("Entering <Identifiers>")
         print("Entering <Operators>")
-        print("Entering <EOS>")
-        print(f"ID: {token.id}, Value: {token.value}")
-        print("Exiting <EOS>")
+        print("Entering <End of Statement> \n")
+        print(f"ID: {token.id}, Value: {token.value} \n")
+        print("Exiting <End of Statement>")
         print("Exiting <Operators>")
         print("Exiting <Identifiers>")
         print("Exiting <Keywords>")
