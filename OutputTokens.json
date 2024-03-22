@@ -1,0 +1,212 @@
+{
+    "Token 0": {
+        "Type": "Special Symbols",
+        "ID": 503,
+        "Value": "\n"
+    },
+    "Token 1": {
+        "Type": "Keywords",
+        "ID": 0,
+        "Value": "import"
+    },
+    "Token 2": {
+        "Type": "String Literal",
+        "ID": 2222,
+        "Value": "scl.h"
+    },
+    "Token 3": {
+        "Type": "Special Symbols",
+        "ID": 503,
+        "Value": "\n"
+    },
+    "Token 4": {
+        "Type": "Keywords",
+        "ID": 1,
+        "Value": "implementations"
+    },
+    "Token 5": {
+        "Type": "Special Symbols",
+        "ID": 503,
+        "Value": "\n"
+    },
+    "Token 6": {
+        "Type": "Keywords",
+        "ID": 2,
+        "Value": "function"
+    },
+    "Token 7": {
+        "Type": "Keywords",
+        "ID": 3,
+        "Value": "main"
+    },
+    "Token 8": {
+        "Type": "Keywords",
+        "ID": 4,
+        "Value": "return"
+    },
+    "Token 9": {
+        "Type": "Keywords",
+        "ID": 5,
+        "Value": "type"
+    },
+    "Token 10": {
+        "Type": "Keywords",
+        "ID": 6,
+        "Value": "integer"
+    },
+    "Token 11": {
+        "Type": "Keywords",
+        "ID": 10,
+        "Value": "is"
+    },
+    "Token 12": {
+        "Type": "Special Symbols",
+        "ID": 503,
+        "Value": "\n"
+    },
+    "Token 13": {
+        "Type": "Keywords",
+        "ID": 11,
+        "Value": "variables"
+    },
+    "Token 14": {
+        "Type": "Special Symbols",
+        "ID": 503,
+        "Value": "\n"
+    },
+    "Token 15": {
+        "Type": "Keywords",
+        "ID": 12,
+        "Value": "define"
+    },
+    "Token 16": {
+        "Type": "Identifiers",
+        "ID": 100,
+        "Value": "x"
+    },
+    "Token 17": {
+        "Type": "Keywords",
+        "ID": 13,
+        "Value": "of"
+    },
+    "Token 18": {
+        "Type": "Keywords",
+        "ID": 5,
+        "Value": "type"
+    },
+    "Token 19": {
+        "Type": "Keywords",
+        "ID": 7,
+        "Value": "double"
+    },
+    "Token 20": {
+        "Type": "Special Symbols",
+        "ID": 503,
+        "Value": "\n"
+    },
+    "Token 21": {
+        "Type": "Keywords",
+        "ID": 14,
+        "Value": "begin"
+    },
+    "Token 22": {
+        "Type": "Special Symbols",
+        "ID": 503,
+        "Value": "\n"
+    },
+    "Token 23": {
+        "Type": "Keywords",
+        "ID": 15,
+        "Value": "display"
+    },
+    "Token 24": {
+        "Type": "String Literal",
+        "ID": 2222,
+        "Value": "Welcome to the world of SCL"
+    },
+    "Token 25": {
+        "Type": "Special Symbols",
+        "ID": 503,
+        "Value": "\n"
+    },
+    "Token 26": {
+        "Type": "Keywords",
+        "ID": 16,
+        "Value": "set"
+    },
+    "Token 27": {
+        "Type": "Identifiers",
+        "ID": 100,
+        "Value": "x"
+    },
+    "Token 28": {
+        "Type": "Operators",
+        "ID": 408,
+        "Value": "="
+    },
+    "Token 29": {
+        "Type": "Numeric Literal",
+        "ID": 1111,
+        "Value": "45.95"
+    },
+    "Token 30": {
+        "Type": "Special Symbols",
+        "ID": 504,
+        "Value": "\t"
+    },
+    "Token 31": {
+        "Type": "Special Symbols",
+        "ID": 503,
+        "Value": "\n"
+    },
+    "Token 32": {
+        "Type": "Keywords",
+        "ID": 15,
+        "Value": "display"
+    },
+    "Token 33": {
+        "Type": "String Literal",
+        "ID": 2222,
+        "Value": "Value of x: "
+    },
+    "Token 34": {
+        "Type": "Special Symbols",
+        "ID": 501,
+        "Value": ","
+    },
+    "Token 35": {
+        "Type": "Identifiers",
+        "ID": 100,
+        "Value": "x"
+    },
+    "Token 36": {
+        "Type": "Special Symbols",
+        "ID": 503,
+        "Value": "\n"
+    },
+    "Token 37": {
+        "Type": "Keywords",
+        "ID": 17,
+        "Value": "exit"
+    },
+    "Token 38": {
+        "Type": "Special Symbols",
+        "ID": 503,
+        "Value": "\n"
+    },
+    "Token 39": {
+        "Type": "Keywords",
+        "ID": 18,
+        "Value": "endfun"
+    },
+    "Token 40": {
+        "Type": "Keywords",
+        "ID": 3,
+        "Value": "main"
+    },
+    "Token 41": {
+        "Type": "Special Symbols",
+        "ID": 503,
+        "Value": "\n"
+    }
+}
