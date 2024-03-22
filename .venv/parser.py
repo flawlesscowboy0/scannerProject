@@ -29,4 +29,57 @@ tokens = parse_tokens_from_file(file_path)
 
 # Print the parsed tokens
 for token in tokens:
-    print(f"Type: {token.type}, ID: {token.id}, Value: {token.value}")
+    if (token.type == "Keywords"):
+        print("Entering <Keywords>")
+        print(f"ID: {token.id}, Value: {token.value}")
+        print("Exiting <Keywords>")
+        continue
+    elif (token.type == "Identifiers"):
+        print("Entering <Keywords>")
+        print("Entering <Identifiers>")
+        print(f"ID: {token.id}, Value: {token.value}")
+        print("Exiting <Identifiers>")
+        print("Exiting <Keywords>")
+        continue
+    elif (token.type == "Operators"):
+        print("Entering <Keywords>")
+        print("Entering <Identifiers>")
+        print("Entering <Operators>")
+        print(f"ID: {token.id}, Value: {token.value}")
+        print("Exiting <Operators>")
+        print("Exiting <Identifiers>")
+        print("Exiting <Keywords>")
+        continue
+    elif (token.type == "Special Symbols"):
+        print("Entering <Keywords>")
+        print("Entering <Identifiers>")
+        print("Entering <Operators>")
+        print("Entering <Special Symbols>")
+        print(f"ID: {token.id}, Value: {token.value}")
+        print("Exiting <Special Symbols>")
+        print("Exiting <Operators>")
+        print("Exiting <Identifiers>")
+        print("Exiting <Keywords>")
+        continue
+    elif (token.type == "String Literal"):
+        print("Entering <Keywords>")
+        print("Entering <Identifiers>")
+        print("Entering <Operators>")
+        print("Entering <String Literal>")
+        print(f"ID: {token.id}, Value: {token.value}")
+        print("Exiting <String Literal>")
+        print("Exiting <Operators>")
+        print("Exiting <Identifiers>")
+        print("Exiting <Keywords>")
+        continue
+    elif (token.type == "Numeric Literal"):
+        print("Entering <Keywords>")
+        print("Entering <Identifiers>")
+        print("Entering <Operators>")
+        print("Entering <Numeric Literal>")
+        print(f"ID: {token.id}, Value: {token.value}")
+        print("Exiting <Numeric Literal>")
+        print("Exiting <Operators>")
+        print("Exiting <Identifiers>")
+        print("Exiting <Keywords>")
+        continue
