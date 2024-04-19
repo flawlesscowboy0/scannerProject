@@ -14,8 +14,22 @@ class Token:
 
 class Parser:
     """Class to parse tokens from a JSON file."""
-    def __init__(self, file_path):
-        self.tokens = self.parse_tokens_from_file(file_path)
+    def __init__(self, file_path=None):
+        if file_path:
+            self.file_path = file_path
+            self.invoke_from_another_class()
+        else:
+            self.file_path = OUTPUT_TOKENS_FILE
+            self.tokens = self.parse_tokens_from_file(self.file_path)
+
+    def invoke_from_another_class(self):
+        """Invoked when called from another class."""
+        scanner = Scanner(filepath=self.file_path)
+        print("\n\nParser Output Begins:\n\n")
+        self.file_path = OUTPUT_TOKENS_FILE
+        self.tokens = self.parse_tokens_from_file(self.file_path)
+        self.print_tokens()
+        print("\n\nInterpreter Output Begins:\n\n")
 
     def parse_tokens_from_file(self, file_path):
         """Parse tokens from the given JSON file."""
@@ -60,8 +74,5 @@ class Parser:
 
 if __name__ == "__main__":
     file_path = input("Enter a file path: (Do not use quotation marks) ")
-    scanner = Scanner(filepath=file_path)
-    scanner.scan()
-
-    parser = Parser(OUTPUT_TOKENS_FILE)
+    parser = Parser(file_path)
     parser.print_tokens()

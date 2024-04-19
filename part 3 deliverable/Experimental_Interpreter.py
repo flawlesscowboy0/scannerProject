@@ -1,8 +1,8 @@
 from parser import Parser  # Importing the Parser class
 
 # Call the Parser to run and do its work
-parser = Parser("C:\\Users\\flawl\\PycharmProjects\\Scanner_Project\\scannerProject\\part 3 deliverable\\OutputTokens.json") # YOU MUST INPUT YOUR FILE PATH TO THE JSON FILE HERE
-parser.print_tokens()
+file_path = input("Enter the filepath to the SCL file: ")
+parser = Parser(file_path)
 
 import math
 

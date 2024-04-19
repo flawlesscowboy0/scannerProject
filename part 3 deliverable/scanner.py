@@ -8,6 +8,7 @@ class Scanner:
     def __init__(self, filepath=None):
         self.text = self._read_file(filepath) if filepath else self._read_from_input()
         self.word_list = self._tokenize()
+        self.scan()
 
     def _read_file(self, filepath):
         return Path(filepath).read_text()
