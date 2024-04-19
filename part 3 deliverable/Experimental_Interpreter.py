@@ -1,3 +1,9 @@
+from parser import Parser  # Importing the Parser class
+
+# Call the Parser to run and do its work
+parser = Parser("your_input_file.scl")
+parser.print_tokens()
+
 import math
 
 # Symbol table to store variables
