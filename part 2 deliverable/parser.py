@@ -1,96 +1,67 @@
 import json
+from scanner import Scanner
+
+# Define constants
+HIERARCHY = ["Keywords", "Identifiers", "Operators", "Special Symbols/String Literal/Numeric Literal/End of Statement"]
+OUTPUT_TOKENS_FILE = "OutputTokens.json"
 
 class Token:
+    """Class to represent tokens."""
     def __init__(self, type, id, value):
         self.type = type
         self.id = id
         self.value = value
 
-# Parse the JSON file containing token data
-def parse_tokens_from_file(file_path):
-    tokens = []
+class Parser:
+    """Class to parse tokens from a JSON file."""
+    def __init__(self, file_path):
+        self.tokens = self.parse_tokens_from_file(file_path)
 
-    with open(file_path, 'r') as file:
-        token_data = json.load(file)
-        
-        for key, data in token_data.items():
-            type = data['Type']
-            id = data['ID']
-            value = data['Value']
+    def parse_tokens_from_file(self, file_path):
+        """Parse tokens from the given JSON file."""
+        try:
+            with open(file_path, 'r') as file:
+                token_data = json.load(file)
+                tokens = [Token(data['Type'], data['ID'], data['Value']) for data in token_data.values()]
+        except FileNotFoundError:
+            print("File not found.")
+            tokens = []
+        except json.JSONDecodeError:
+            print("Error decoding JSON.")
+            tokens = []
+        return tokens
 
-            token = Token(type, id, value)
-            tokens.append(token)
+    def print_token_hierarchy(self, token):
+        """Print the hierarchy and details of a token."""
+        for level, token_types in enumerate(HIERARCHY):
+            if token.type in token_types.split("/"):
+                break
 
-    return tokens
+        if "/" in HIERARCHY[level]:
+            combined_levels = HIERARCHY[level].split("/")
+            combined_level_index = combined_levels.index(token.type)
+            enter_tags = " --> ".join(HIERARCHY[:level] + [combined_levels[combined_level_index]])
+            exit_tags = " --> ".join(reversed(HIERARCHY[:level] + [combined_levels[combined_level_index]]))
+        else:
+            enter_tags = " --> ".join(HIERARCHY[:level + 1])
+            exit_tags = " --> ".join(reversed(HIERARCHY[:level + 1]))
 
-# Example usage
-file_path = input("Enter a file path \n")  # Update with the path to your output file
-tokens = parse_tokens_from_file(file_path)
+        print(f"Entering {enter_tags}")
+        if token.id == 503:
+            print(f"ID: {token.id}, Value: Newline Character")
+        else:
+            print(f"ID: {token.id}, Value: {token.value}")
+        print(f"Exiting {exit_tags}")
 
-# Print the parsed tokens
-for token in tokens:
-    if (token.type == "Keywords"):
-        print("Entering <Keywords> \n")
-        print(f"ID: {token.id}, Value: {token.value} \n")
-        print("Exiting <Keywords>")
-        continue
-    elif (token.type == "Identifiers"):
-        print("Entering <Keywords>")
-        print("Entering <Identifiers> \n")
-        print(f"ID: {token.id}, Value: {token.value} \n")
-        print("Exiting <Identifiers>")
-        print("Exiting <Keywords>")
-        continue
-    elif (token.type == "Operators"):
-        print("Entering <Keywords>")
-        print("Entering <Identifiers>")
-        print("Entering <Operators> \n")
-        print(f"ID: {token.id}, Value: {token.value} \n")
-        print("Exiting <Operators>")
-        print("Exiting <Identifiers>")
-        print("Exiting <Keywords>")
-        continue
-    elif (token.type == "Special Symbols"):
-        print("Entering <Keywords>")
-        print("Entering <Identifiers>")
-        print("Entering <Operators>")
-        print("Entering <Special Symbols> \n")
-        print(f"ID: {token.id}, Value: {token.value} \n")
-        print("Exiting <Special Symbols>")
-        print("Exiting <Operators>")
-        print("Exiting <Identifiers>")
-        print("Exiting <Keywords>")
-        continue
-    elif (token.type == "String Literal"):
-        print("Entering <Keywords>")
-        print("Entering <Identifiers>")
-        print("Entering <Operators>")
-        print("Entering <String Literal> \n")
-        print(f"ID: {token.id}, Value: {token.value} \n")
-        print("Exiting <String Literal>")
-        print("Exiting <Operators>")
-        print("Exiting <Identifiers>")
-        print("Exiting <Keywords>")
-        continue
-    elif (token.type == "Numeric Literal"):
-        print("Entering <Keywords>")
-        print("Entering <Identifiers>")
-        print("Entering <Operators>")
-        print("Entering <Numeric Literal> \n")
-        print(f"ID: {token.id}, Value: {token.value} \n")
-        print("Exiting <Numeric Literal>")
-        print("Exiting <Operators>")
-        print("Exiting <Identifiers>")
-        print("Exiting <Keywords>")
-        continue
-    elif (token.type == "End of Statement"):
-        print("Entering <Keywords>")
-        print("Entering <Identifiers>")
-        print("Entering <Operators>")
-        print("Entering <End of Statement> \n")
-        print(f"ID: {token.id}, Value: {token.value} \n")
-        print("Exiting <End of Statement>")
-        print("Exiting <Operators>")
-        print("Exiting <Identifiers>")
-        print("Exiting <Keywords>")
-        continue
+    def print_tokens(self):
+        """Print the hierarchy and details of all tokens."""
+        for token in self.tokens:
+            self.print_token_hierarchy(token)
+
+if __name__ == "__main__":
+    file_path = input("Enter a file path: (Do not use quotation marks) ")
+    scanner = Scanner(filepath=file_path)
+    scanner.scan()
+
+    parser = Parser(OUTPUT_TOKENS_FILE)
+    parser.print_tokens()
