@@ -1,0 +1,26 @@
+import "scl.h"
+/*
+	Program		: areacir.scl
+	Description	: Read value of the radius of a circle from input
+		console, compute the area and circumference, display value
+		of these on the output console.
+	Author		: Jose M Garrido, Nov 20 2021.
+*/
+symbol PI, M_PI
+
+implementations
+
+function main is
+variables
+	define r of type double		// radius of circle
+	define area of type double
+	define cir of type double	// circumference of circle
+begin
+	input "Enter value of radius: ", r
+	display "Value of radius: ", r
+	set area = PI * r^2
+	set cir = 2.0 * PI * r
+	display "Value of area: ", area
+	display "Value of circumference ", cir
+	exit		// execution terminates ok
+endfun main
