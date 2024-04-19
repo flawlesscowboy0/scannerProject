@@ -7,32 +7,23 @@ symbol_table = {}
 symbol_table["PI"] = math.pi
 symbol_table["M_PI"] = math.pi
 
-# Function to handle input statement
-def handle_input(prompt):
-    try:
-        return float(input(prompt))
-    except ValueError:
-        print("Invalid input. Please enter a valid number.")
-        return handle_input(prompt)
-
 # Function to handle display statement
-def handle_display(message, value):
-    print(message, value)
+def handle_display(*args):
+    print(*args)
 
 # Function to execute SCL statements
 def execute_statement(statement):
-    if statement[0] == "input":
-        variable_name = statement[1]
-        prompt = statement[2]
-        value = handle_input(prompt)
-        symbol_table[variable_name] = value
-    elif statement[0] == "display":
+    if statement[0] == "display":
         message = statement[1]
-        if statement[2] in symbol_table:
-            value = symbol_table[statement[2]]
-        else:
-            value = float(statement[2]) if statement[2].replace(".", "", 1).isdigit() else statement[2]
-        handle_display(message, value)
+        args = [symbol_table[arg] if arg in symbol_table else arg for arg in statement[2:]]
+        handle_display(message, *args)
+    elif statement[0] == "set":
+        variable_name = statement[1]
+        expression = statement[2]
+        value = evaluate_expression(expression)
+        symbol_table[variable_name] = value
+    else:
+        raise ValueError("Invalid statement: {}".format(statement))
 
 # Function to evaluate expressions
 def evaluate_expression(expression):
@@ -57,24 +48,13 @@ def evaluate_expression(expression):
 # Function to execute SCL code
 def execute_scl(code):
     for statement in code:
-        if statement[0] == "input" or statement[0] == "display":
-            execute_statement(statement)
-        elif statement[0] == "set":
-            variable_name = statement[1]
-            expression = statement[2]
-            value = evaluate_expression(expression)
-            symbol_table[variable_name] = value
-        else:
-            raise ValueError("Invalid statement: {}".format(statement))
+        execute_statement(statement)
 
 # Example SCL code
 scl_code = [
-    ["input", "r", "Enter value of radius: "],
-    ["display", "Value of radius:", "r"],
-    ["set", "area", ["multiply", ["variable", "PI"], ["power", ["variable", "r"], ["number", "2"]]]],
-    ["set", "cir", ["multiply", ["number", "2.0"], ["multiply", ["variable", "PI"], ["variable", "r"]]]],
-    ["display", "Value of area:", "area"],
-    ["display", "Value of circumference:", "cir"]
+    ["display", "Welcome to the world of SCL"],
+    ["set", "x", ["number", "45.95"]],
+    ["display", "Value of x:", "x"]
 ]
 
 # Execute the SCL code
